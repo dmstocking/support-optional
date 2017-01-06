@@ -7,6 +7,22 @@ migrate your code away from there library to actual Java8. Some change the
 names of class and others use default methods which make it harder for Android
 developers to use. So this is yet another attempt to have optional for java 6.
 
+Setup
+-----
+
+Add the following to your build.gradle
+
+```
+   repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+   }
+
+   dependencies {
+         compile 'com.github.buttink:support-optional:1.0-SNAPSHOT'
+   }
+```
+
 Migration
 ---------
 
