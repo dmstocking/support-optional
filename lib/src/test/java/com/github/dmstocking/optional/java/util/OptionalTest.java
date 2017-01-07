@@ -240,6 +240,16 @@ public class OptionalTest {
     }
 
     @Test
+    public void equalsOfValueDoesNotEqualDifferentType() throws Exception {
+        Assert.assertNotEquals(Optional.of(1), "a");
+    }
+
+    @Test
+    public void equalsOfEmptyDoesNotEqualValue() throws Exception {
+        Assert.assertNotEquals(Optional.empty(), Optional.of(1));
+    }
+
+    @Test
     public void hashCodeOfEmptyIsZero() {
         Assert.assertEquals(0, Optional.empty().hashCode());
     }
