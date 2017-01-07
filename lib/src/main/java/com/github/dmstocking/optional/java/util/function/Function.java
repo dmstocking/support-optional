@@ -1,4 +1,4 @@
-package com.stockingd.optional.java.util.function;
+package com.github.dmstocking.optional.java.util.function;
 
 /**
  * Represents a function that accepts one argument and produces a result.

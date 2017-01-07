@@ -1,9 +1,9 @@
-package com.stockingd.optional.java.util;
+package com.github.dmstocking.optional.java.util;
 
-import com.stockingd.optional.java.util.function.Consumer;
-import com.stockingd.optional.java.util.function.Function;
-import com.stockingd.optional.java.util.function.Predicate;
-import com.stockingd.optional.java.util.function.Supplier;
+import com.github.dmstocking.optional.java.util.function.Consumer;
+import com.github.dmstocking.optional.java.util.function.Function;
+import com.github.dmstocking.optional.java.util.function.Predicate;
+import com.github.dmstocking.optional.java.util.function.Supplier;
 
 import java.util.NoSuchElementException;
 

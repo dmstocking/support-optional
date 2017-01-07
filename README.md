@@ -38,17 +38,17 @@ Migration
 Perform the following replacement regex
 
 ```
-s/com\.stockingd\.optional\.//g
+s/com\.github\.dmstocking\.optional\.//g
 ```
 
 This could be done with find and sed in your project folder via
 
 ```bash
-find . -name "*.java" -exec sed -i 's/com\.stockingd\.optional\.//g' {} \;
+find . -name "*.java" -exec sed -i 's/com\.github\.dmstocking\.optional\.//g' {} \;
 ```
 
 or with an IDE so a search and replace without regex of
-`com.stockingd.optional.` with nothing over your entire src directory.
+`com.github.dmstocking.optional.` with nothing over your entire src directory.
 
 License
 -------

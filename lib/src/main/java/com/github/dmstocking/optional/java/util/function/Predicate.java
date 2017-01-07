@@ -1,4 +1,4 @@
-package com.stockingd.optional.java.util.function;
+package com.github.dmstocking.optional.java.util.function;
 
 /**
  * Represents a predicate (boolean-valued function) of one argument.
