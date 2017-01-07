@@ -1,3 +1,6 @@
+![build status](https://travis-ci.org/dmstocking/support-optional.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/dmstocking/support-optional/badge.svg?branch=master)](https://coveralls.io/github/dmstocking/support-optional?branch=master)
+
 support-optional
 ===============================================
 
