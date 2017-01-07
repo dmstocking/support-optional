@@ -31,7 +31,7 @@ repositories {
 Then add the following to your modules build.gradle file
 ```gradle
 dependencies {
-      compile 'com.github.buttink:support-optional:1.0-SNAPSHOT'
+      compile 'com.github.buttink:support-optional:1.0'
 }
 ```
 
