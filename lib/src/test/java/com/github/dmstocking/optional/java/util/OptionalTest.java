@@ -136,6 +136,20 @@ public class OptionalTest {
     }
 
     @Test
+    public void ifPresentOrElseDoesActionWhenPresent() {
+        final int[] value = {0};
+        Optional.of(0).ifPresentOrElse(o -> value[0] = 1, () -> {});
+        Assert.assertEquals(1, value[0]);
+    }
+
+    @Test
+    public void ifPresentOrElseDoesEmptyActionWhenEmpty() {
+        final int[] value = {0};
+        Optional.empty().ifPresentOrElse(o -> {}, () -> value[0] = 1);
+        Assert.assertEquals(1, value[0]);
+    }
+
+    @Test
     public void isPresentOfEmptyReturnsFalse() {
         Assert.assertFalse(Optional.empty().isPresent());
     }
@@ -166,6 +180,28 @@ public class OptionalTest {
             }
         });
         Assert.assertEquals(Optional.of("mapped"), mapped);
+    }
+
+    @Test
+    public void orReturnsThisWhenPresent() {
+        Optional<Integer> actual = Optional.of(0).or(() -> Optional.of(1));
+        Assert.assertEquals(Optional.of(0), actual);
+    }
+
+    @Test
+    public void orReturnsSuppliedWhenEmpty() {
+        Optional<Integer> actual = Optional.<Integer>empty().or(() -> Optional.of(1));
+        Assert.assertEquals(Optional.of(1), actual);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void orThrowsNPEOnNullSupplier() {
+        Optional.<Integer>empty().or(null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void orThrowsNPEOnNullSupplied() {
+        Optional.<Integer>empty().or(() -> null);
     }
 
     @Test

@@ -141,6 +141,23 @@ public final class Optional<T> {
         }
     }
 
+    /**
+     * If a value is present, invoke the specified consumer with the value, otherwise performs the
+     * given empty-based aciton.
+     *
+     * @param consumer    block to be executed if a value is present
+     * @param emptyAction the empty-based action to be performed, if no value is present
+     * @throws NullPointerException if value is present and {@code consumer} is null, or no value is
+     *                              present and the given empty-based action is null.
+     */
+    public void ifPresentOrElse(Consumer<? super T> consumer, Runnable emptyAction) {
+        if (isPresent()) {
+            consumer.accept(value);
+        } else {
+            emptyAction.run();
+        }
+    }
+
     public boolean isPresent() {
         return value != null;
     }
@@ -175,6 +192,31 @@ public final class Optional<T> {
         }
 
         return empty();
+    }
+
+    /**
+     * If a value is present, returns an Optional describing the value, otherwise returns an
+     * Optional produced by the supplying function.
+     *
+     * @param supplier the supplying function that produces an Optional to be returned
+     * @return returns an Optional describing the value of this Optional, if a value is present,
+     * otherwise an Optional produced by the supplying function.
+     */
+    public Optional<T> or(Supplier<? extends Optional<? extends T>> supplier) {
+        if (isPresent()) {
+            return this;
+        }
+
+        if (supplier == null) {
+            throw new NullPointerException();
+        }
+
+        Optional<T> optional = (Optional<T>) supplier.get();
+        if (optional == null) {
+            throw new NullPointerException();
+        }
+
+        return  optional;
     }
 
     /**
