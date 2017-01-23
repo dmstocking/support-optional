@@ -138,14 +138,32 @@ public class OptionalTest {
     @Test
     public void ifPresentOrElseDoesActionWhenPresent() {
         final int[] value = {0};
-        Optional.of(0).ifPresentOrElse(o -> value[0] = 1, () -> {});
+        Optional.of(0).ifPresentOrElse(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer o) {
+                value[0] = 1;
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+            }
+        });
         Assert.assertEquals(1, value[0]);
     }
 
     @Test
     public void ifPresentOrElseDoesEmptyActionWhenEmpty() {
         final int[] value = {0};
-        Optional.empty().ifPresentOrElse(o -> {}, () -> value[0] = 1);
+        Optional.empty().ifPresentOrElse(new Consumer<Object>() {
+            @Override
+            public void accept(Object o) {
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+                value[0] = 1;
+            }
+        });
         Assert.assertEquals(1, value[0]);
     }
 
@@ -184,13 +202,23 @@ public class OptionalTest {
 
     @Test
     public void orReturnsThisWhenPresent() {
-        Optional<Integer> actual = Optional.of(0).or(() -> Optional.of(1));
+        Optional<Integer> actual = Optional.of(0).or(new Supplier<Optional<? extends Integer>>() {
+            @Override
+            public Optional<? extends Integer> get() {
+                return Optional.of(1);
+            }
+        });
         Assert.assertEquals(Optional.of(0), actual);
     }
 
     @Test
     public void orReturnsSuppliedWhenEmpty() {
-        Optional<Integer> actual = Optional.<Integer>empty().or(() -> Optional.of(1));
+        Optional<Integer> actual = Optional.<Integer>empty().or(new Supplier<Optional<? extends Integer>>() {
+            @Override
+            public Optional<? extends Integer> get() {
+                return Optional.of(1);
+            }
+        });
         Assert.assertEquals(Optional.of(1), actual);
     }
 
@@ -201,7 +229,12 @@ public class OptionalTest {
 
     @Test(expected = NullPointerException.class)
     public void orThrowsNPEOnNullSupplied() {
-        Optional.<Integer>empty().or(() -> null);
+        Optional.<Integer>empty().or(new Supplier<Optional<? extends Integer>>() {
+            @Override
+            public Optional<? extends Integer> get() {
+                return null;
+            }
+        });
     }
 
     @Test
