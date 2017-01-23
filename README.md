@@ -4,7 +4,7 @@
 support-optional
 ===============================================
 
-support-optional provides a Java 8 optional that supports Java 6, Android and
+support-optional provides a Java 9 optional that supports Java 6, Android and
 RetroLambda development while having an easy migration to the real optional
 class. This library is much in the spirit of ActionBarSherlock that it was only
 designed to be a removed.
@@ -15,7 +15,7 @@ day throw it away. <br>
 
 Other backports have various problems like different class names, slightly
 different behavior or interface default methods. These make it harder to use and
-migrate to the real Java 8 optional class. So here is yet another optional
+migrate to the real Java 9 optional class. So here is yet another optional
 backport, so you don't have to waste your time writing one.
 
 Download
@@ -31,7 +31,7 @@ repositories {
 Then add the following to your modules build.gradle file
 ```gradle
 dependencies {
-      compile 'com.github.dmstocking:support-optional:1.0'
+      compile 'com.github.dmstocking:support-optional:1.1'
 }
 ```
 
@@ -52,6 +52,18 @@ find . -name "*.java" -exec sed -i 's/com\.github\.dmstocking\.optional\.//g' {}
 
 or with an IDE so a search and replace without regex of
 `com.github.dmstocking.optional.` with nothing over your entire src directory.
+
+Unavailable Methods
+-------------------
+
+```
+- Optional<T>::stream()
+- OptionalInt::stream()
+- OptionalLong::stream()
+- OptionalDouble::stream()
+```
+Because this library does not backport streams, there is no stream method on any of the Optional
+classes.
 
 License
 -------
