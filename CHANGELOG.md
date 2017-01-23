@@ -12,4 +12,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Added OptionalLong
 - Added OptionalDouble
 
-[1.1]: https://github.com/olivierlacan/keep-a-changelog/compare/1.0...1.1
+[1.1]: https://github.com/dmstocking/support-optional/compare/1.0...1.1
