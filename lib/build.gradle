@@ -1,15 +1,15 @@
 plugins {
     id 'com.github.kt3k.coveralls' version '2.6.3'
+    id 'com.jfrog.bintray' version '1.7.3'
 }
 
-group 'com.stockingd.optional'
-version '1.0'
+group 'com.github.dmstocking'
+version '1.1'
 
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'jacoco'
-
-group = 'com.github.dmstocking'
 
 compileJava {
     sourceCompatibility = 1.5
@@ -41,6 +41,34 @@ install {
                     distribution 'repo'
                 }
             }
+        }
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId 'com.github.dmstocking'
+            artifactId 'support-optional'
+            version '1.1'
+        }
+    }
+}
+
+bintray {
+    user BINTRAY_USER
+    key BINTRAY_KEY
+    publications = ['mavenJava']
+    pkg {
+        repo = 'support-optional'
+        name = 'support-optional'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/dmstocking/support-optional.git'
+        version {
+            name = '1.1'
+            desc = 'support-optional 1.1'
+            vcsTag = '1.1'
         }
     }
 }
