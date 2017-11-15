@@ -22,17 +22,10 @@ backport, so you don't have to waste your time writing one.
 Download
 -----
 
-Add the following to your root build.gradle
-```gradle
-repositories {
-     maven { url "https://jitpack.io" }
-}
-```
-
-Then add the following to your modules build.gradle file
+Add the following to your modules build.gradle file
 ```gradle
 dependencies {
-      compile 'com.github.dmstocking:support-optional:1.1'
+      compile 'com.github.dmstocking:support-optional:1.2'
 }
 ```
 
