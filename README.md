@@ -1,3 +1,4 @@
+[![Download](https://api.bintray.com/packages/buttink/support-optional/support-optional/images/download.svg) ](https://bintray.com/buttink/support-optional/support-optional/_latestVersion)
 [![Build Status](https://travis-ci.org/dmstocking/support-optional.svg?branch=master)](https://travis-ci.org/dmstocking/support-optional)
 [![Coverage Status](https://coveralls.io/repos/github/dmstocking/support-optional/badge.svg?branch=master)](https://coveralls.io/github/dmstocking/support-optional?branch=master)
 

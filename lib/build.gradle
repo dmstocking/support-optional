@@ -4,12 +4,22 @@ plugins {
 }
 
 group 'com.github.dmstocking'
-version '1.1'
+version '1.2'
 
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'jacoco'
+
+/*
+ * If you wish to publish builds, you must provide a gradle.properties
+ * file in "app" that has two lines
+ *
+ * BINTRAY_USER=<real user here>
+ * BINTRAY_KEY=<real key here>
+ */
+def bintrayUser = hasProperty('BINTRAY_USER') ? BINTRAY_USER : "Do not fill in"
+def bintrayKey = hasProperty('BINTRAY_KEY') ? BINTRAY_KEY : "Do not fill in"
 
 compileJava {
     sourceCompatibility = 1.5
@@ -51,14 +61,26 @@ publishing {
             from components.java
             groupId 'com.github.dmstocking'
             artifactId 'support-optional'
-            version '1.1'
+            version '1.2'
+            artifact (sourcesJar) {
+                classifier = 'sources'
+            }
         }
     }
 }
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
+
 bintray {
-    user BINTRAY_USER
-    key BINTRAY_KEY
+    user bintrayUser
+    key bintrayKey
     publications = ['mavenJava']
     pkg {
         repo = 'support-optional'
@@ -66,9 +88,9 @@ bintray {
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/dmstocking/support-optional.git'
         version {
-            name = '1.1'
-            desc = 'support-optional 1.1'
-            vcsTag = '1.1'
+            name = '1.2'
+            desc = 'support-optional 1.2'
+            vcsTag = '1.2'
         }
     }
 }
