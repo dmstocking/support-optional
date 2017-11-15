@@ -21,8 +21,14 @@ backport, so you don't have to waste your time writing one.
 
 Download
 -----
+Make sure you have the jcenter repository in your root build.gradle
+```gradle
+repositories {
+      jcenter()
+}
+```
 
-Add the following to your modules build.gradle file
+Then add the following to your modules build.gradle file
 ```gradle
 dependencies {
       compile 'com.github.dmstocking:support-optional:1.2'
